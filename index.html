@@ -4,16 +4,81 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GitHub repo example</title>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>HomeworkWeek2</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="index.jsdelivr" href="src/index.js"/>
   </head>
   <body>
-    <h1>Hello GitHub</h1>
-    <form>
-      <input type="text" placeholder="Enter your email..." />
-      <input type="password" placeholder="Enter your password..." />
-      <input type="submit" value="Login" />
-    </form>
-    <script src="script.js"></script>
+ 
+    <div class="container">
+      <div class="weather 1">
+      <form id="search-form">
+        <div class="mb-3">
+          <label for="exampleInputcity" class="form-label"></label>
+          <input
+            type="text"
+            class="form-control"
+            id="search-text-input"
+            autocomplete="off"
+        autofocus="on"
+            placeholder="Search for a city 🔍"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <button type="submit" id="myCity" class="btn btn-primary">My location</button>
+      <div class="row titles">
+        <div class="col-4">
+          <h2 id = "city" class="cityName">City</h2>
+          <div class="row">
+            <div class="col-12 info" id="Date">Day Month</br> Hour
+
+</br> Year
+</div>
+          </div>
+        </div>
+        <div class="col-4"><h1 id="degress">Temp</h1>
+         
+         <div class="row">
+            <div class="col-12 info"> <ul>
+              <li> Min: <span id="min"></span>ºC <li> Max: <span id="max"></span>ºC
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
+            </ul> </div>
+          </div></div>
+        <div class="col-4"><h3>☁️</h3> <div class="row"><div id= "description" class="col-12 current">Sky</div></div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row days">
+      <div class="col-2">
+        SAT
+        <div class="col-12 temperature">☁️ </br> 19º/7º</div>
+      </div>
+<div class="col-2">
+  SUN <div class="col-12 temperature">🌥 </br>17º/9º</div>
+</div>
+<div class="col-2">MON <div class="col-12 temperature">☀️</br>19º/8º</div></div>
+<div class="col-2">TUE <div class="col-12 temperature">☁️</br> 19º/8º</div></div>
+<div class="col-2">WEN <div class="col-12 temperature">⛅️</br>19º/7º</div></div>
+<div class="col-2">THU <div class="col-12 temperature">🌤</br>21º/7º</div></div>
+
+    </div> 
+      
+  <h4>"I got sunshine on a <strong>cloudy</strong> day"</h4>
+    </div>
   </body>
 </html>

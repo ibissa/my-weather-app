@@ -1,3 +1,4 @@
+//Date
 let now = new Date();
 let fullDate = document.querySelector("#Date");
 let date = now.getDate();

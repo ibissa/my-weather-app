@@ -99,6 +99,17 @@ function showCurrentWeather(response) {
   h1.innerHTML = `${temperature}`;
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 function handlePosition(position) {
@@ -115,6 +126,8 @@ function getCurrentPosition() {
 
 let button = document.querySelector("#myCity");
 button.addEventListener("click", getCurrentPosition);
+
+//Unit converter
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();

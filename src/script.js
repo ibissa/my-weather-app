@@ -48,7 +48,7 @@ function displayCurrentWeather(response) {
   document.querySelector("h2").innerHTML = response.data.name;
   document.querySelector("h1").innerHTML = `${Math.round(
     response.data.main.temp
-  )}`;
+  )}º`;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -95,7 +95,7 @@ function showCurrentWeather(response) {
   let h2 = document.querySelector("h2");
   let temperature = Math.round(response.data.main.temp);
   h2.innerHTML = `${response.data.name}`;
-  h1.innerHTML = `${temperature}`;
+  h1.innerHTML = `${temperature}º`;
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
 }

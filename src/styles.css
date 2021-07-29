@@ -80,3 +80,8 @@ li {
 #description {
   text-transform: capitalize;
 }
+
+#corf {
+  font-size: 18px;
+  color: blueviolet;
+}

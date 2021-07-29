@@ -78,7 +78,7 @@ function handleSubmit(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
-searchCity("h2");
+searchCity("New York");
 
 //Current Location button.
 

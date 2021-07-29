@@ -30,8 +30,7 @@ let months = [
 let month = months[now.getMonth()];
 fullDate.innerHTML = `${day} ${date} ${month} </br> ${hours}:${minutes} </br> ${year}`;
 
-//👨‍🏫Your task
-//On your project, when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
+//Current temperature of the city.
 function displayCurrentWeather(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
@@ -48,7 +47,8 @@ function displayCurrentWeather(response) {
   document.querySelector("h2").innerHTML = response.data.name;
   document.querySelector("h1").innerHTML = `${Math.round(
     response.data.main.temp
-  )}º`;
+  )}`;
+
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -58,6 +58,8 @@ function displayCurrentWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 function searchCity(city) {
@@ -77,8 +79,7 @@ searchForm.addEventListener("submit", handleSubmit);
 
 searchCity("h2");
 
-//🙀 Bonus point:
-//Add a Current Location button. When clicking on it, it uses the Geolocation API to get your GPS coordinates and display and the city and current temperature using the OpenWeather API.
+//Current Location button.
 
 function showCurrentWeather(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
@@ -95,7 +96,7 @@ function showCurrentWeather(response) {
   let h2 = document.querySelector("h2");
   let temperature = Math.round(response.data.main.temp);
   h2.innerHTML = `${response.data.name}`;
-  h1.innerHTML = `${temperature}º`;
+  h1.innerHTML = `${temperature}`;
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
 }
@@ -114,3 +115,27 @@ function getCurrentPosition() {
 
 let button = document.querySelector("#myCity");
 button.addEventListener("click", getCurrentPosition);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);

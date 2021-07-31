@@ -31,6 +31,34 @@ let months = [
 let month = months[now.getMonth()];
 fullDate.innerHTML = `${day} ${date} ${month} </br> ${hours}:${minutes} </br> ${year}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+          <div class="weather-forecast-date">${day}</div>
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+              alt=""
+            />️ 
+            <div class="weather-forecast-temperatures">
+              <span class="weather-forecast-temperatures-max"
+                ><strong>18º</strong></span
+              >/<span class="weather-forecast-temperatures-min">12º</span>
+            </div>
+        </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //Current temperature of the city.
 function displayCurrentWeather(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
@@ -81,6 +109,7 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 searchCity("Los Angeles");
+displayForecast();
 
 //Current Location button.
 

@@ -100,7 +100,7 @@ function displayCurrentWeather(response) {
   document.querySelector("h2").innerHTML = response.data.name;
   document.querySelector("h1").innerHTML = `${Math.round(
     response.data.main.temp
-  )}`;
+  )}ºC`;
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -151,7 +151,7 @@ function showCurrentWeather(response) {
   let h2 = document.querySelector("h2");
   let temperature = Math.round(response.data.main.temp);
   h2.innerHTML = `${response.data.name}`;
-  h1.innerHTML = `${temperature}`;
+  h1.innerHTML = `${temperature}ºC`;
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
   let sky = document.querySelector("#sky");
@@ -184,29 +184,3 @@ function getCurrentPosition() {
 
 let button = document.querySelector("#myCity");
 button.addEventListener("click", getCurrentPosition);
-
-//Unit converter
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);

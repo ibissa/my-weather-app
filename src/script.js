@@ -31,7 +31,8 @@ let months = [
 let month = months[now.getMonth()];
 fullDate.innerHTML = `${day} ${date} ${month} </br> ${hours}:${minutes} </br> ${year}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun"];
@@ -57,6 +58,14 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "35e31b5022fa82dff3680a2316423322";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 //Current temperature of the city.
@@ -91,6 +100,8 @@ function displayCurrentWeather(response) {
   );
 
   celsiusTemperature = response.data.main.temp;
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -109,7 +120,6 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 searchCity("Los Angeles");
-displayForecast();
 
 //Current Location button.
 

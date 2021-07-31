@@ -167,6 +167,7 @@ function showCurrentWeather(response) {
   );
 
   celsiusTemperature = response.data.main.temp;
+  getForecast(response.data.coord);
 }
 
 function handlePosition(position) {
